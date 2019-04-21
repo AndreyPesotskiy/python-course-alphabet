@@ -24,10 +24,15 @@ Same information for those one who does not like English (yet)
 
 https://timeweb.com/ru/community/articles/kak-ustanovit-postgresql-na-ubuntu-18-04-1 
 
+Links for windows
+
+https://www.w3resource.com/PostgreSQL/connect-to-postgresql-database.php
+
 > - sudo -u postgres psql
 > - postgres=# create database cursor_db;
 > - postgres=# create user cursor with encrypted password 'very_secret_password';
 > - postgres=# grant all privileges on database cursor_db to cursor;
+> - postgres=# ALTER USER cursor WITH SUPERUSER;
 > - postgres=# \q;
   
 
@@ -74,4 +79,29 @@ But still could not connect with python code
 ```
 subl /etc/postgresql/9.6/main/pg_hba.conf
 ```
+Your version of psql could be another, look in dir /etc/postgresql/
+
 and change `local all all peer` to `local all all password`
+
+Then you need to restart your postgres service
+
+```.env
+sudo service postgresql restart
+```
+
+If you still have problems with installing pyscopg2
+
+try to do next
+
+```
+ls -la /usr/lib/postgresql/
+# look on version of postgress
+
+export PATH=/usr/lib/postgresql/your_version_here/bin/:$PATH
+
+```
+
+
+```.env
+sudo apt install build-essential
+```
