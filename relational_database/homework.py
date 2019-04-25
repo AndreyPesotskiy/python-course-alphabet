@@ -231,7 +231,7 @@ def task_15_list_customers_with_any_order_or_not(cur):
     """
     cur.execute(
         '''SELECT c.CustomerName, c.ContactName, c.Country, o.OrderId FROM Customers c 
-           FULL OUTER JOIN Orders o ON o.CustomerID = c.CustomerID'''
+           LEFT JOIN Orders o ON o.CustomerID = c.CustomerID'''
     )
     return cur.fetchall()
 
