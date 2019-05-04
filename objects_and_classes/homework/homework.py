@@ -101,7 +101,7 @@ class Car:
 class Garage:
     def __init__(self, town, places: int, owner=None):
         if town in TOWNS:
-            self.type = type
+            self.town = town
         else:
             raise Exception('Town expected one of TOWNS.')
         self.places = int(places)
@@ -142,7 +142,24 @@ class Cesar:
     def cars_count(self):
         return sum(len(garage.cars) for garage in self.garages)
 
-    def add_car(self, car: Car, garage=None):
+    def add_car(self, car, garage=None):
+
+        if garage in self.garages:
+            if len(garage.cars) < garage.places:
+                print(f'Selected garage {garage.town}')
+                return garage.add(car)
+            print(f'Sorry garage in {garage.town} is full')
+            return
+
+        # count is count cars in garage, free_garage is object garage
+
+        count, free_garage = min([(len(obj.cars), obj) for obj in self.garages])
+        print(free_garage.town)
+        if count < free_garage.places:
+            return free_garage.add(car)
+        print(f'Sorry all the places are taken')
+
+    def add_car2(self, car: Car, garage=None):
         if garage:
             garage.add(car)
         elif self.garages:
