@@ -6,7 +6,7 @@ from lection.utils import describe_object
 class Programmer:
 
     def __init__(self, name, language="Python", position="Junior") -> None:
-        print("Fill out programmer with attributes")
+        # print("Fill out programmer with attributes")
         self.name = name
         self.language = language
         self.position = position
@@ -20,20 +20,22 @@ class Programmer:
         Returns:
             instance of class
         """
+
+        # print("We create new object that will be map as programmer")
         print("We create new object that will be map as programmer")
         obj = super(Programmer, cls).__new__(cls)
         return obj
 
     def __enter__(self):
-        print("Get coffee for programmer")
+        # print("Get coffee for programmer")
         self.enough_coffee = True
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Bring back coffee from this animal")
+        # print("Bring back coffee from this animal")
         self.enough_coffee = False
-
-    def __del__(self):
-        print(f"Programmer go to sleep")
+    #
+    # def __del__(self):
+    #     print(f"Programmer go to sleep")
 
     def work(self):
         if not self.enough_coffee:
@@ -62,23 +64,26 @@ class Programmer:
 if __name__ == "__main__":
     # Create instance of Programmer
     programmer = Programmer(name="Anton")
+    # print("Before", programmer.enough_coffee)
+    # programmer.work()
+    # with programmer:
+    #     # our code
+    #     programmer.work()
+    #     print("Until", programmer.enough_coffee)
 
-    print("Before", programmer.enough_coffee)
-    with programmer:
-        # our code
-        print("Until", programmer.enough_coffee)
+    # print("After", programmer.enough_coffee)
 
-    print("After", programmer.enough_coffee)
-
-    # # Lets look what it have
+    # Lets look what it have
     # print(describe_object("programmer", programmer))
-    #
-    # # Lets see how it is converted to string
-    # print(f"{programmer}")
-    # print(programmer)
-    #
-    # # Lets see repr
-    # res = repr(programmer)
-    # print(res)
+
+    # Lets see how it is converted to string
+    print(str(programmer))
+    print(f"{programmer}")
+    print(programmer)
+
+    # Lets see repr
+    res = repr(programmer)
+    print(res)
     # recover_programmer = eval(res)
+    # print(recover_programmer.language)
     # print(programmer.position)

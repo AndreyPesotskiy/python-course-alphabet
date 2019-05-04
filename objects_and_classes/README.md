@@ -46,4 +46,9 @@
 ### Classmethod and static method (bonus)
 ### Useful inks
  - list of magic methods https://www.tutorialsteacher.com/python/magic-methods-in-python
- - 
+    >>> import uuid
+    >>> uuid.uuid4()
+    UUID('8ca11db2-df96-41e0-b839-f6da1c905cfc')
+    >>> a = uuid.uuid4()
+    UUID('3be7227a-b034-4f60-906c-38131e4e2278')
+    >>> a.hex

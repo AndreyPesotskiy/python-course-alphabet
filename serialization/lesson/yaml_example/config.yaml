@@ -1,0 +1,10 @@
+database:
+  database: cursor_db
+  user: cursor
+  password: very_secret_password
+  port: 5432
+
+Programmer:
+  name: Denis
+  language: Python
+  position: Senior
