@@ -1,9 +1,6 @@
-from objects_and_classes.homework.constants import (
-    CARS_TYPES,
-    CARS_PRODUCER,
-    TOWNS
-)
+from objects_and_classes.homework.constants import CARS_TYPES, CARS_PRODUCER, TOWNS
 import uuid
+from typing import List
 
 """
 Вам небхідно написати 3 класи. Колекціонери Гаражі та Автомобілі.
@@ -53,7 +50,13 @@ import uuid
 
     Колекціонерів можна порівнювати за ціною всіх їх автомобілів.
 """
+class IncorrectValueException(Exception):
+    pass
 
+class Helper:
+    @staticmethod
+    def value_in_list_without_case(value: str, data: List[str]):
+        return value.lower() in [item.lower() for item in data]
 
 class Car:
     def __init__(self, price: float, type: CARS_TYPES, producer: CARS_PRODUCER, mileage: float):
@@ -61,20 +64,17 @@ class Car:
         self.mileage = float(mileage)
         self.number = uuid.uuid4()
 
-        if type in CARS_TYPES:
+        if Helper.value_in_list_without_case(type, CARS_TYPES):
             self.type = type
         else:
-            raise Exception('Type expected one of CARS_TYPES.')
-        if producer in CARS_PRODUCER:
+            raise IncorrectValueException('Type expected one of CARS_TYPES.')
+        if Helper.value_in_list_without_case(producer, CARS_PRODUCER):
             self.producer = producer
         else:
-            raise Exception('Producer expected one of CARS_PRODUCER.')
-
-    def __str__(self):
-        return f"Car: price - {car.price}, type - {car.type}, producer - {car.producer}, mileage - {car.mileage}"
+            raise IncorrectValueException('Producer expected one of CARS_PRODUCER.')
 
     def __repr__(self):
-        return self.__str__()
+        return f"Car: price - {car.price}, type - {car.type}, producer - {car.producer}, mileage - {car.mileage}"
 
     def __eq__(self, other):
         return self.price == other.price
@@ -99,22 +99,22 @@ class Car:
 
 
 class Garage:
-    def __init__(self, town, places: int, owner=None):
-        if town in TOWNS:
+    def __init__(self, town: TOWNS, places: int, owner=None, cars=list()):
+        if Helper.value_in_list_without_case(town, TOWNS):
             self.town = town
         else:
-            raise Exception('Town expected one of TOWNS.')
+            raise IncorrectValueException('Town expected one of TOWNS.')
         self.places = int(places)
         self.owner = owner
-        self.cars = []
+        self.cars = cars
 
     def add(self, car: Car):
         if len(self.cars) < self.places and not self.exist_car(car):
             self.cars.append(car)
         elif self.exist_car(car):
-            raise Exception('This car is already in the garage.')
+            raise IncorrectValueException('This car is already in the garage.')
         else:
-            raise Exception('There are no empty seats.')
+            raise IncorrectValueException('There are no empty seats.')
 
     def remove(self, car: Car):
         if car in self.cars:
@@ -142,24 +142,7 @@ class Cesar:
     def cars_count(self):
         return sum(len(garage.cars) for garage in self.garages)
 
-    def add_car(self, car, garage=None):
-
-        if garage in self.garages:
-            if len(garage.cars) < garage.places:
-                print(f'Selected garage {garage.town}')
-                return garage.add(car)
-            print(f'Sorry garage in {garage.town} is full')
-            return
-
-        # count is count cars in garage, free_garage is object garage
-
-        count, free_garage = min([(len(obj.cars), obj) for obj in self.garages])
-        print(free_garage.town)
-        if count < free_garage.places:
-            return free_garage.add(car)
-        print(f'Sorry all the places are taken')
-
-    def add_car2(self, car: Car, garage=None):
+    def add_car(self, car: Car, garage=None):
         if garage:
             garage.add(car)
         elif self.garages:
