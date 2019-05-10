@@ -145,6 +145,7 @@ class Car(Serialization):
             'type': self.type,
             'producer': self.producer,
             'mileage': self.mileage,
+            'number': str(self.number),
         }
 
 
