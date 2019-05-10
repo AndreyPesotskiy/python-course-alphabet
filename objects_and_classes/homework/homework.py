@@ -74,7 +74,7 @@ class Car:
             raise IncorrectValueException('Producer expected one of CARS_PRODUCER.')
 
     def __repr__(self):
-        return f"Car: price - {car.price}, type - {car.type}, producer - {car.producer}, mileage - {car.mileage}"
+        return f"Car: price - {self.price}, type - {self.type}, producer - {self.producer}, mileage - {self.mileage}"
 
     def __eq__(self, other):
         return self.price == other.price
