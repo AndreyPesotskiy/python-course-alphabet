@@ -137,7 +137,7 @@ class Car(Serialization):
 
     @classmethod
     def instance_from_dict(cls, data: Dict):
-        return Car(data.get('price'), data.get('type'), data.get('producer'), data.get('mileage'))
+        return cls(data.get('price'), data.get('type'), data.get('producer'), data.get('mileage'))
 
     def to_dict(self):
         return {
@@ -188,7 +188,7 @@ class Garage(Serialization):
                     in
                     cars_data]
 
-        return Garage(data.get('town'), data.get('places'), data.get('owner'), cars)
+        return cls(data.get('town'), data.get('places'), data.get('owner'), cars)
 
     def to_dict(self):
         return {
@@ -254,7 +254,7 @@ class Cesar(Serialization):
                             in cars_data]
                 garages.append(Garage(garage.get('town'), garage.get('places'), garage.get('owner'), cars))
 
-        return Cesar(data.get('name'), garages)
+        return cls(data.get('name'), garages)
 
     def to_dict(self):
         return {
