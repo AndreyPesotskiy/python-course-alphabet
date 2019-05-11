@@ -70,9 +70,6 @@ class Cat:
             self._average_speed = 6
 
     def run(self, hours: int):
-        if isinstance(self.get_average_speed(), str):
-            return self.get_average_speed()
-
         distance = self.get_average_speed() * hours
 
         if distance <= 25:
