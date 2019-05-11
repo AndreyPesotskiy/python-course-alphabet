@@ -313,7 +313,7 @@ class House:
     def create_roof(self, width: float, height: float, roof_type: str):
         if width == 0 or height == 0:
             raise ValueError('Value must be not 0')
-        if not self.__roof is None:
+        if self.__roof is not None:
             raise ValueError('The house can not have two roofs')
 
         self.__roof = Roof(width, height, roof_type)
@@ -327,7 +327,7 @@ class House:
     def create_door(self, width: float, height: float):
         if width == 0 or height == 0:
             raise ValueError('Value must be not 0')
-        if not self.__door is None:
+        if self.__door is not None:
             raise ValueError('The house can not have two doors')
 
         self.__door = Door(width, height)
