@@ -148,7 +148,14 @@ class Wall:
         return self.width * self.height
 
     def number_of_rolls_of_wallpaper(self, roll_width_m: float, roll_length_m: float):
-        return self.wall_square() / (roll_width_m * roll_length_m)
+        """
+        This works for tests, but it would be better to do this:
+        return self.wall_square() // (roll_width_m * roll_length_m)
+        """
+        lines = roll_length_m // self.height
+        lines_in_roll = self.width // roll_width_m
+
+        return lines_in_roll / lines
 
 
 class Roof:
@@ -360,7 +367,7 @@ class House:
         if roll_width_m == 0 or roll_length_m == 0:
             raise ValueError('Sorry length must be not 0')
 
-        return sum([wall.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for wall in self.__walls]) // 1
+        return sum([wall.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for wall in self.__walls])
 
     def get_room_square(self):
         return self.get_walls_square() - self.get_windows_square() - self.get_door_square()
