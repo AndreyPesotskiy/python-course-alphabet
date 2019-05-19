@@ -200,8 +200,8 @@ class Roof:
         elif self.roof_type == 'single-pitch':
             return self.width * self.height
         else:
-            raise ValueError(
-                'Sorry there is only two types of roofs: gable, single-pitch')
+            raise ValueError('Sorry there is only two types of roofs: gable, '
+                             'single-pitch')
 
 
 class Window:
@@ -259,9 +259,8 @@ class Door:
         elif material == 'metal':
             return self.door_square() * self.metal_price
         else:
-            raise ValueError(
-                'Sorry we don\'t have such material. there are only two types '
-                'of material: wood, metal.')
+            raise ValueError('Sorry we don\'t have such material. there are '
+                             'only two types of material: wood, metal.')
 
     def update_wood_price(self, price: int):
         self.wood_price = price
@@ -347,32 +346,26 @@ class House:
     def __init__(self):
         pass
 
-    @staticmethod
-    def __is_empty_value(*args):
-        for value in args:
-            if not value:
-                raise ValueError('Value must be not 0')
-
     def create_wall(self, width: float, height: float):
-        House.__is_empty_value(width, height)
+        is_empty_value(width, height)
         if self.get_count_of_walls() == 4:
             raise ValueError('Our house can not have more than 4 walls')
 
         self.__walls.append(Wall(width, height))
 
     def create_roof(self, width: float, height: float, roof_type: str):
-        House.__is_empty_value(width, height)
+        is_empty_value(width, height)
         if self.__roof is not None:
             raise ValueError('The house can not have two roofs')
 
         self.__roof = Roof(width, height, roof_type)
 
     def create_window(self, width: float, height: float):
-        House.__is_empty_value(width, height)
+        is_empty_value(width, height)
         self.__windows.append(Window(width, height))
 
     def create_door(self, width: float, height: float):
-        House.__is_empty_value(width, height)
+        is_empty_value(width, height)
         if self.__door is not None:
             raise ValueError('The house can not have two doors')
 
@@ -407,11 +400,16 @@ class House:
 
     def get_number_of_rolls_of_wallpapers(self, roll_width_m: float,
                                           roll_length_m: float):
-        House.__is_empty_value(roll_width_m, roll_length_m)
-        return sum(
-            [wall.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for
-             wall in self.__walls])
+        is_empty_value(roll_width_m, roll_length_m)
+        return sum([wall.number_of_rolls_of_wallpaper(roll_width_m, roll_length_m) for wall in self.__walls])
 
     def get_room_square(self):
         return self.get_walls_square() - self.get_windows_square() \
                - self.get_door_square()
+
+
+def is_empty_value(*args):
+    if not all(args):
+        raise ValueError('Value must be not 0')
+
+    return True
