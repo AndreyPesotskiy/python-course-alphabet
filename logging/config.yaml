@@ -1,0 +1,22 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  detail:
+    format: '%(levelname) -10s;message time: %(asctime)s; Module where message was raised: %(module)s: Number of line where message was raised: %(lineno)s Name of func where m was raised: %(funcName)s %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+  file:
+    class: logging.FileHandler
+    level: ERROR
+    formatter: detail
+    filename: /home/dvasilov/Projects/cursor/python-course-alphabet/logging/cursor.log
+loggers:
+  sampleLogger:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: no
