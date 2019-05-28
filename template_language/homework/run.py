@@ -7,6 +7,7 @@ app = Flask(__name__)
 with open('movies.json') as f:
     MOVIES = json.load(f)
 
+max_year = 2010
 
 @app.route('/')
 def home_page():
@@ -19,7 +20,7 @@ def movies_page():
         'movies.html',
         title='Movies list',
         movies=MOVIES,
-        max_year=2010
+        max_year=max_year
     )
 
 
@@ -37,7 +38,12 @@ def movie_page(id):
                 title=MOVIES[i].get('title'),
                 movie=MOVIES[i]
             )
-    return render_template('movies.html', title='Movies list', movies=MOVIES)
+    return render_template(
+        'movies.html',
+        title='Movies list',
+        movies=MOVIES,
+        max_year=max_year
+    )
 
 
 if __name__ == '__main__':
