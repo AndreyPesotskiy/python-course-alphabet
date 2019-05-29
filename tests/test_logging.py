@@ -19,6 +19,7 @@ class TestSayHello(unittest.TestCase):
 
             self.assertEqual(len(logs.records), expected_message_number)
             # Some interesting way to do that
+            # Equal to record = logs.records[0]
             [record] = logs.records
             self.assertEqual(record.levelname, expected_level)
             self.assertEqual(record.msg, expected_message)

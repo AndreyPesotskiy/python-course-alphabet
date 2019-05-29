@@ -23,6 +23,10 @@ class TestCategoriesInterfaceWithFakes(unittest.TestCase):
         fill_categories(self.cat_repo, categories)
         self.assertEqual(len(self.cat_repo.records), 1)
 
+        category = self.cat_repo.records[0]
+
+        self.assertIn(categories[0]['category_name'], category.values())
+
 
 if __name__ == "__main__":
     unittest.main()

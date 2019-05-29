@@ -15,6 +15,7 @@ handlers:
     level: ERROR
     formatter: detail
     filename: /home/dvasilov/Projects/cursor/python-course-alphabet/logging/cursor.log
+    mode: a
 loggers:
   sampleLogger:
     level: DEBUG

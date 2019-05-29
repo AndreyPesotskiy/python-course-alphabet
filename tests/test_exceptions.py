@@ -1,7 +1,8 @@
 import unittest
+from typing import Optional
 
 
-def division(a: int, b: int) -> float:
+def division(a: int, b: int) -> Optional[float]:
     if b == 0:
         raise ValueError("Second argument should not be zero")
     return a / b
@@ -10,8 +11,9 @@ def division(a: int, b: int) -> float:
 class TestException(unittest.TestCase):
 
     def test_exception_raise(self):
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(ValueError, msg="Ups should raise error") as context:
             division(10, 0)
+            print("Something")
         self.assertTrue("Second argument should not be zero" in context.exception.args)
 
     def test_valid_data(self):

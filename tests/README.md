@@ -36,6 +36,9 @@ https://io.made.com/testing-quadrants-test-levels-and-testing-types/
 
 https://habr.com/ru/post/269759/
   
+Робота з raw sql
+
+https://www.btelligent.com/en/blog/best-practice-for-sql-statements-in-python/
  
 ### Про що потрібно зауважити
     Перевірка PR
