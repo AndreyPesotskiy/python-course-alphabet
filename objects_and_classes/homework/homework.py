@@ -1,4 +1,5 @@
-from objects_and_classes.homework.constants import CARS_TYPES, CARS_PRODUCER, TOWNS
+from objects_and_classes.homework.constants import CARS_TYPES, CARS_PRODUCER, \
+    TOWNS
 import uuid
 from typing import List
 
@@ -50,16 +51,21 @@ from typing import List
 
     Колекціонерів можна порівнювати за ціною всіх їх автомобілів.
 """
+
+
 class IncorrectValueException(Exception):
     pass
+
 
 class Helper:
     @staticmethod
     def value_in_list_without_case(value: str, data: List[str]):
         return value.lower() in [item.lower() for item in data]
 
+
 class Car:
-    def __init__(self, price: float, type: CARS_TYPES, producer: CARS_PRODUCER, mileage: float):
+    def __init__(self, price: float, type: CARS_TYPES, producer: CARS_PRODUCER,
+                 mileage: float):
         self.price = float(price)
         self.mileage = float(mileage)
         self.number = uuid.uuid4()
@@ -71,7 +77,8 @@ class Car:
         if Helper.value_in_list_without_case(producer, CARS_PRODUCER):
             self.producer = producer
         else:
-            raise IncorrectValueException('Producer expected one of CARS_PRODUCER.')
+            raise IncorrectValueException(
+                'Producer expected one of CARS_PRODUCER.')
 
     def __repr__(self):
         return f"Car: price - {self.price}, type - {self.type}, producer - {self.producer}, mileage - {self.mileage}"
@@ -146,7 +153,8 @@ class Cesar:
         if garage:
             garage.add(car)
         elif self.garages:
-            max(self.garages, key=lambda garage: garage.places - len(garage.cars)).add(car)
+            max(self.garages,
+                key=lambda garage: garage.places - len(garage.cars)).add(car)
 
     def __eq__(self, other):
         return self.hit_hat() == other.hit_hat()
