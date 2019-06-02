@@ -150,14 +150,14 @@ class Car(Serialization):
 
 
 class Garage(Serialization):
-    def __init__(self, town: TOWNS, places: int, owner=None, cars=list()):
+    def __init__(self, town: TOWNS, places: int, owner=None, cars=None):
         if Helper.value_in_list_without_case(town, TOWNS):
             self.town = town
         else:
             raise IncorrectValueException('Town expected one of TOWNS.')
         self.places = int(places)
         self.owner = owner
-        self.cars = cars
+        self.cars = cars if cars else []
 
     def add(self, car: Car):
         if len(self.cars) < self.places and not self.exist_car(car):
