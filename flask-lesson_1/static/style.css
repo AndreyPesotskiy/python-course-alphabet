@@ -1,0 +1,29 @@
+body {
+    font-family: "Trebuchet MS", serif;
+}
+
+.about-title {
+    display: inline-block;
+    padding-right: 10%;
+}
+
+h3 {
+    padding: 10px;
+}
+
+li {
+    margin: 20px 20px 40px 20px;
+}
+
+a {
+    background: cornflowerblue;
+    padding: 14px;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: midnightblue;
+}
