@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <main role="main" class="inner cover my-auto text-center">
+        <h1 class="cover-heading">Flask lesson 1</h1>
+        <p class="lead mt-5">
+            <a href="{{ url_for('fruits.fruits_page') }}"
+               class="btn btn-lg btn-primary">Go to fruits</a>
+            <a href="{{ url_for('vegetables.vegetables_page') }}"
+               class="btn btn-lg btn-primary">Go to vegetables</a>
+        </p>
+    </main>
+{% endblock %}
