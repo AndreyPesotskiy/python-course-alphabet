@@ -1,12 +1,12 @@
 name: cesar
-register_id: ea44dee1-85ad-47a0-b44c-db615b8fa606
+register_id: cd1f22fa-6dcc-4e03-a1b4-5cc47e4c887e
 garages:
 - town: Kiev
   places: 3
-  owner: ea44dee1-85ad-47a0-b44c-db615b8fa606
+  owner: cd1f22fa-6dcc-4e03-a1b4-5cc47e4c887e
   cars:
   - price: 81.96
     type: Sedan
     producer: BENTLEY
     mileage: 24.3
-    number: 4d2baa9b-e607-45e2-9d34-a618c62a3c99
+    number: 2c9d79d5-ed17-4f57-ac69-2af2b064087d
