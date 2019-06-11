@@ -280,3 +280,7 @@ class TestCesar(unittest.TestCase):
             cesar.instance_from_yaml_file(self.cesar_yaml_file),
             Cesar
         )
+
+
+if __name__ == "__main__":
+    unittest.main()
