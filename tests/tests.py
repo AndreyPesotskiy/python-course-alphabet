@@ -138,7 +138,7 @@ class TestCar(unittest.TestCase):
 
 
 class TestGarage(unittest.TestCase):
-    garage_pickle_file = './data/pickle/garage.txt'
+    garage_pickle_file = './data/pickle/garage.pickle'
 
     def test_garage_init_error(self):
         with self.assertRaises(IncorrectValueException):
