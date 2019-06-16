@@ -8,8 +8,9 @@ from serialization.homework import (
 import uuid
 import json
 import pickle
-from os.path import isfile
+from os import path
 
+PROJECT_PATH = path.dirname(path.abspath(__file__))
 
 def is_json(json_str):
     try:
@@ -44,7 +45,7 @@ cesar = Cesar('cesar', [garage], register_id)
 
 
 class TestCar(unittest.TestCase):
-    car_json_file = './data/json/car.json'
+    car_json_file = PROJECT_PATH + '/data/json/car.json'
 
     def test_car_init_error(self):
         with self.assertRaises(IncorrectValueException):
@@ -128,7 +129,7 @@ class TestCar(unittest.TestCase):
 
     def test_car_to_json_file(self):
         car.to_json_file(self.car_json_file)
-        self.assertTrue(isfile(self.car_json_file))
+        self.assertTrue(path.isfile(self.car_json_file))
 
     def test_car_instance_from_json_file(self):
         self.assertIsInstance(
@@ -138,7 +139,7 @@ class TestCar(unittest.TestCase):
 
 
 class TestGarage(unittest.TestCase):
-    garage_pickle_file = './data/pickle/garage.pickle'
+    garage_pickle_file = PROJECT_PATH + '/data/pickle/garage.pickle'
 
     def test_garage_init_error(self):
         with self.assertRaises(IncorrectValueException):
@@ -200,7 +201,7 @@ class TestGarage(unittest.TestCase):
 
     def test_garage_to_pickle_file(self):
         garage.to_pickle_file(self.garage_pickle_file)
-        self.assertTrue(isfile(self.garage_pickle_file))
+        self.assertTrue(path.isfile(self.garage_pickle_file))
 
     def test_garage_instance_from_pickle_file(self):
         self.assertIsInstance(
@@ -210,7 +211,7 @@ class TestGarage(unittest.TestCase):
 
 
 class TestCesar(unittest.TestCase):
-    cesar_yaml_file = './data/yaml/cesar.yaml'
+    cesar_yaml_file = PROJECT_PATH + '/data/yaml/cesar.yaml'
 
     def test_cesar_hit_hat(self):
         self.assertEqual(cesar.hit_hat(), 81.96)
@@ -273,7 +274,7 @@ class TestCesar(unittest.TestCase):
 
     def test_cesar_to_yaml_file(self):
         cesar.to_yaml_file(self.cesar_yaml_file)
-        self.assertTrue(isfile(self.cesar_yaml_file))
+        self.assertTrue(path.isfile(self.cesar_yaml_file))
 
     def test_cesar_instance_from_yaml_file(self):
         self.assertIsInstance(
