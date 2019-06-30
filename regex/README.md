@@ -82,7 +82,7 @@
     ^ ->  Початок строки
     $ ->  Кінець строки
     \b ->  Має знаходитися в кінці строки
-    \B ->  Має знаходитися на початкупше строки
+    \B ->  Не Має знаходитися на початку чи в кінці строки
     
     
 ## Backreferences / Capturing
@@ -98,13 +98,11 @@
 Регулярні вирази. Як їх використовувати в Python
 https://www.educative.io/edpresso/how-to-use-regex-in-python?affiliate_id=5082902844932096&utm_source=google&utm_medium=cpc&utm_campaign=platform2&utm_content=ad-1-dynamic&gclid=CjwKCAjw8-LnBRAyEiwA6eUMGubDs_KNWp_g0IgAqT0W-z-1U1hF1slwob0Bfa7mF-ulIA5rTLmBOBoCmrIQAvD_BwE
 
-
 Набір задачок для того, щоб себе перевірити
 https://www.hackerrank.com/challenges/matching-anything-but-new-line/problem
 
 Онлайн консоль для запуску регулярних виразів
 https://regex101.com/
-
 
 Символи групування
 https://www.rexegg.com/regex-quickstart.html

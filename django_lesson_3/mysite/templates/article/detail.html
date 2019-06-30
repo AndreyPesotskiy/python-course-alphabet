@@ -1,0 +1,12 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+
+<p>Author: {{ article.author }}</p>
+
+<p>Title: {{ article.title }}</p>
+<br>
+<p>Description: {{ article.description|safe }}</p>
+
+<a href="{% url 'update' article.id %}">Update</a>
+<a href="{% url 'delete' article.id %}">Delete</a>
